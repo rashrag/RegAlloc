@@ -1,0 +1,155 @@
+1 : if a < 10 goto 3
+2 : goto 13
+3 : t1 = a + 1
+4 : a  =  t1 
+5 : a  =  23
+6 : if a == 23 goto 8
+7 : goto 10
+8 : a  =  10
+9 : goto 12
+10 : a  =  19
+11 : goto 12
+12 : goto 1
+13 : end
+1 : if a < 10 goto 3
+2 : goto 13
+3 : t1 = a + 1
+4 : a  =  t1 
+5 : a  =  23
+6 : if a == 23 goto 8
+7 : goto 10
+8 : a  =  10
+9 : goto 12
+10 : a  =  19
+11 : goto 12
+12 : goto 1
+13 : end
+1 : if a < b goto 3
+2 : goto 16
+3 : t1 = d * e
+4 : c  =  t1 
+5 : if b < c goto 7
+6 : goto 12
+7 : t2 = q + r
+8 : p  =  t2 
+9 : t3 = q * r
+10 : s  =  t3 
+11 : goto 19
+12 : t4 = b + c
+13 : f  =  t4 
+14 : goto 19
+15 : goto 19
+16 : t5 = q + r
+17 : p  =  t5 
+18 : goto 19
+19 : end
+1 : if a < b goto 3
+2 : goto 16
+3 : t1 = d * e
+4 : c  =  t1 
+5 : if b < c goto 7
+6 : goto 12
+7 : t2 = q + r
+8 : p  =  t2 
+9 : t3 = q * r
+10 : s  =  t3 
+11 : goto 19
+12 : t4 = b + c
+13 : f  =  t4 
+14 : goto 19
+15 : goto 19
+16 : t5 = q + r
+17 : p  =  t5 
+18 : goto 19
+19 : end
+1 : if p < q goto 3
+2 : goto 25
+3 : if a < b goto 5
+4 : goto 10
+5 : t1 = b + c
+6 : a  =  t1 
+7 : t2 = d * e
+8 : c  =  t2 
+9 : goto 15
+10 : t3 = c + d
+11 : b  =  t3 
+12 : t4 = a * e
+13 : d  =  t4 
+14 : goto 15
+15 : if b < c goto 17
+16 : goto 22
+17 : t5 = b + c
+18 : a  =  t5 
+19 : t6 = d + e
+20 : c  =  t6 
+21 : goto 22
+22 : t7 = q * r
+23 : p  =  t7 
+24 : goto 25
+25 : t8 = q * r
+26 : s  =  t8 
+27 : end
+1 : if a < b goto 3
+2 : goto 12
+3 : if c < d goto 5
+4 : goto 8
+5 : t1 = y + z
+6 : x  =  t1 
+7 : goto 11
+8 : t2 = y - z
+9 : x  =  t2 
+10 : goto 11
+11 : goto 1
+12 : t3 = p / q
+13 : b  =  t3 
+14 : t4 = a * b
+15 : c  =  t4 
+16 : end
+1 : if a < b goto 3
+2 : goto 12
+3 : if c < d goto 5
+4 : goto 8
+5 : t1 = y + z
+6 : x  =  t1 
+7 : goto 11
+8 : t2 = y - z
+9 : x  =  t2 
+10 : goto 11
+11 : goto 1
+12 : t3 = p / q
+13 : b  =  t3 
+14 : t4 = a * b
+15 : c  =  t4 
+16 : end
+1 : if a < b goto 3
+2 : goto 12
+3 : if c < d goto 5
+4 : goto 8
+5 : t1 = y + z
+6 : x  =  t1 
+7 : goto 11
+8 : t2 = y - z
+9 : x  =  t2 
+10 : goto 11
+11 : goto 1
+12 : t3 = p / q
+13 : b  =  t3 
+14 : t4 = a * b
+15 : c  =  t4 
+16 : end
+1 : if a < b goto 3
+2 : goto 12
+3 : if c < d goto 5
+4 : goto 8
+5 : t1 = y + z
+6 : x  =  t1 
+7 : goto 11
+8 : t2 = y - z
+9 : x  =  t2 
+10 : goto 11
+11 : goto 1
+12 : t3 = p / q
+13 : b  =  t3 
+14 : t4 = a * b
+15 : c  =  t4 
+16 : end

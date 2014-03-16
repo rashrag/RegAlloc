@@ -1,0 +1,416 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AND
+    ENDWHILE
+    ELSE
+    ENDIF
+    NOT
+    OR
+
+Grammar
+
+Rule 0     S' -> sentence
+Rule 1     sentence -> ID EQUALS expression
+Rule 2     sentence -> ID
+Rule 3     expression -> expression PLUS expression
+Rule 4     expression -> expression MULT expression
+Rule 5     expression -> expression MINUS expression
+Rule 6     expression -> expression DIV expression
+Rule 7     expression -> OPBR expression CLBR
+Rule 8     expression -> ID
+Rule 9     sentence -> IF boo
+Rule 10    boo -> boo RELOP boo
+Rule 11    boo -> ID
+Rule 12    sentence -> WHILE boo
+
+Terminals, with rules where they appear
+
+AND                  : 
+CLBR                 : 7
+DIV                  : 6
+ELSE                 : 
+ENDIF                : 
+ENDWHILE             : 
+EQUALS               : 1
+ID                   : 1 2 8 11
+IF                   : 9
+MINUS                : 5
+MULT                 : 4
+NOT                  : 
+OPBR                 : 7
+OR                   : 
+PLUS                 : 3
+RELOP                : 10
+WHILE                : 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+boo                  : 9 10 10 12
+expression           : 1 3 3 4 4 5 5 6 6 7
+sentence             : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . sentence
+    (1) sentence -> . ID EQUALS expression
+    (2) sentence -> . ID
+    (9) sentence -> . IF boo
+    (12) sentence -> . WHILE boo
+
+    ID              shift and go to state 3
+    IF              shift and go to state 4
+    WHILE           shift and go to state 2
+
+    sentence                       shift and go to state 1
+
+state 1
+
+    (0) S' -> sentence .
+
+
+
+state 2
+
+    (12) sentence -> WHILE . boo
+    (10) boo -> . boo RELOP boo
+    (11) boo -> . ID
+
+    ID              shift and go to state 5
+
+    boo                            shift and go to state 6
+
+state 3
+
+    (1) sentence -> ID . EQUALS expression
+    (2) sentence -> ID .
+
+    EQUALS          shift and go to state 7
+    $end            reduce using rule 2 (sentence -> ID .)
+
+
+state 4
+
+    (9) sentence -> IF . boo
+    (10) boo -> . boo RELOP boo
+    (11) boo -> . ID
+
+    ID              shift and go to state 5
+
+    boo                            shift and go to state 8
+
+state 5
+
+    (11) boo -> ID .
+
+    RELOP           reduce using rule 11 (boo -> ID .)
+    $end            reduce using rule 11 (boo -> ID .)
+
+
+state 6
+
+    (12) sentence -> WHILE boo .
+    (10) boo -> boo . RELOP boo
+
+    $end            reduce using rule 12 (sentence -> WHILE boo .)
+    RELOP           shift and go to state 9
+
+
+state 7
+
+    (1) sentence -> ID EQUALS . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MULT expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression DIV expression
+    (7) expression -> . OPBR expression CLBR
+    (8) expression -> . ID
+
+    OPBR            shift and go to state 10
+    ID              shift and go to state 11
+
+    expression                     shift and go to state 12
+
+state 8
+
+    (9) sentence -> IF boo .
+    (10) boo -> boo . RELOP boo
+
+    $end            reduce using rule 9 (sentence -> IF boo .)
+    RELOP           shift and go to state 9
+
+
+state 9
+
+    (10) boo -> boo RELOP . boo
+    (10) boo -> . boo RELOP boo
+    (11) boo -> . ID
+
+    ID              shift and go to state 5
+
+    boo                            shift and go to state 13
+
+state 10
+
+    (7) expression -> OPBR . expression CLBR
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MULT expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression DIV expression
+    (7) expression -> . OPBR expression CLBR
+    (8) expression -> . ID
+
+    OPBR            shift and go to state 10
+    ID              shift and go to state 11
+
+    expression                     shift and go to state 14
+
+state 11
+
+    (8) expression -> ID .
+
+    PLUS            reduce using rule 8 (expression -> ID .)
+    MULT            reduce using rule 8 (expression -> ID .)
+    MINUS           reduce using rule 8 (expression -> ID .)
+    DIV             reduce using rule 8 (expression -> ID .)
+    $end            reduce using rule 8 (expression -> ID .)
+    CLBR            reduce using rule 8 (expression -> ID .)
+
+
+state 12
+
+    (1) sentence -> ID EQUALS expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MULT expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . DIV expression
+
+    $end            reduce using rule 1 (sentence -> ID EQUALS expression .)
+    PLUS            shift and go to state 15
+    MULT            shift and go to state 18
+    MINUS           shift and go to state 17
+    DIV             shift and go to state 16
+
+
+state 13
+
+    (10) boo -> boo RELOP boo .
+    (10) boo -> boo . RELOP boo
+
+  ! shift/reduce conflict for RELOP resolved as shift
+    $end            reduce using rule 10 (boo -> boo RELOP boo .)
+    RELOP           shift and go to state 9
+
+  ! RELOP           [ reduce using rule 10 (boo -> boo RELOP boo .) ]
+
+
+state 14
+
+    (7) expression -> OPBR expression . CLBR
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MULT expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . DIV expression
+
+    CLBR            shift and go to state 19
+    PLUS            shift and go to state 15
+    MULT            shift and go to state 18
+    MINUS           shift and go to state 17
+    DIV             shift and go to state 16
+
+
+state 15
+
+    (3) expression -> expression PLUS . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MULT expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression DIV expression
+    (7) expression -> . OPBR expression CLBR
+    (8) expression -> . ID
+
+    OPBR            shift and go to state 10
+    ID              shift and go to state 11
+
+    expression                     shift and go to state 20
+
+state 16
+
+    (6) expression -> expression DIV . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MULT expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression DIV expression
+    (7) expression -> . OPBR expression CLBR
+    (8) expression -> . ID
+
+    OPBR            shift and go to state 10
+    ID              shift and go to state 11
+
+    expression                     shift and go to state 21
+
+state 17
+
+    (5) expression -> expression MINUS . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MULT expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression DIV expression
+    (7) expression -> . OPBR expression CLBR
+    (8) expression -> . ID
+
+    OPBR            shift and go to state 10
+    ID              shift and go to state 11
+
+    expression                     shift and go to state 22
+
+state 18
+
+    (4) expression -> expression MULT . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MULT expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression DIV expression
+    (7) expression -> . OPBR expression CLBR
+    (8) expression -> . ID
+
+    OPBR            shift and go to state 10
+    ID              shift and go to state 11
+
+    expression                     shift and go to state 23
+
+state 19
+
+    (7) expression -> OPBR expression CLBR .
+
+    PLUS            reduce using rule 7 (expression -> OPBR expression CLBR .)
+    MULT            reduce using rule 7 (expression -> OPBR expression CLBR .)
+    MINUS           reduce using rule 7 (expression -> OPBR expression CLBR .)
+    DIV             reduce using rule 7 (expression -> OPBR expression CLBR .)
+    $end            reduce using rule 7 (expression -> OPBR expression CLBR .)
+    CLBR            reduce using rule 7 (expression -> OPBR expression CLBR .)
+
+
+state 20
+
+    (3) expression -> expression PLUS expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MULT expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . DIV expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+    $end            reduce using rule 3 (expression -> expression PLUS expression .)
+    CLBR            reduce using rule 3 (expression -> expression PLUS expression .)
+    PLUS            shift and go to state 15
+    MULT            shift and go to state 18
+    MINUS           shift and go to state 17
+    DIV             shift and go to state 16
+
+  ! PLUS            [ reduce using rule 3 (expression -> expression PLUS expression .) ]
+  ! MULT            [ reduce using rule 3 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ reduce using rule 3 (expression -> expression PLUS expression .) ]
+  ! DIV             [ reduce using rule 3 (expression -> expression PLUS expression .) ]
+
+
+state 21
+
+    (6) expression -> expression DIV expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MULT expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . DIV expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+    $end            reduce using rule 6 (expression -> expression DIV expression .)
+    CLBR            reduce using rule 6 (expression -> expression DIV expression .)
+    PLUS            shift and go to state 15
+    MULT            shift and go to state 18
+    MINUS           shift and go to state 17
+    DIV             shift and go to state 16
+
+  ! PLUS            [ reduce using rule 6 (expression -> expression DIV expression .) ]
+  ! MULT            [ reduce using rule 6 (expression -> expression DIV expression .) ]
+  ! MINUS           [ reduce using rule 6 (expression -> expression DIV expression .) ]
+  ! DIV             [ reduce using rule 6 (expression -> expression DIV expression .) ]
+
+
+state 22
+
+    (5) expression -> expression MINUS expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MULT expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . DIV expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+    $end            reduce using rule 5 (expression -> expression MINUS expression .)
+    CLBR            reduce using rule 5 (expression -> expression MINUS expression .)
+    PLUS            shift and go to state 15
+    MULT            shift and go to state 18
+    MINUS           shift and go to state 17
+    DIV             shift and go to state 16
+
+  ! PLUS            [ reduce using rule 5 (expression -> expression MINUS expression .) ]
+  ! MULT            [ reduce using rule 5 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ reduce using rule 5 (expression -> expression MINUS expression .) ]
+  ! DIV             [ reduce using rule 5 (expression -> expression MINUS expression .) ]
+
+
+state 23
+
+    (4) expression -> expression MULT expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MULT expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . DIV expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+    $end            reduce using rule 4 (expression -> expression MULT expression .)
+    CLBR            reduce using rule 4 (expression -> expression MULT expression .)
+    PLUS            shift and go to state 15
+    MULT            shift and go to state 18
+    MINUS           shift and go to state 17
+    DIV             shift and go to state 16
+
+  ! PLUS            [ reduce using rule 4 (expression -> expression MULT expression .) ]
+  ! MULT            [ reduce using rule 4 (expression -> expression MULT expression .) ]
+  ! MINUS           [ reduce using rule 4 (expression -> expression MULT expression .) ]
+  ! DIV             [ reduce using rule 4 (expression -> expression MULT expression .) ]
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for RELOP in state 13 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 20 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 20 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 20 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 20 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 21 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 21 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 21 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 21 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 22 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 22 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 22 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 22 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 23 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 23 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 23 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 23 resolved as shift

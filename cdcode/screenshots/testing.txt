@@ -1,0 +1,18 @@
+if a<b
+	c=d*e
+	if b<c
+		p=q+r
+		s=q*r
+		q=q-r
+		r=r/s
+		r=p/q
+	endif
+	else
+		f=b+c
+	endelse
+endif
+else
+	p=q+r
+endelse
+
+

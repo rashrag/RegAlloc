@@ -1,0 +1,10 @@
+while a<b
+	if c<d
+		x = y+z
+	endif
+	else
+		x = y-z
+	endelse
+endwhile
+b=p/q
+c=a*b

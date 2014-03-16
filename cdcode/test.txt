@@ -1,0 +1,10 @@
+while a<10
+	a = a+1
+	a = 23
+	if a==23
+		a=10
+	endif
+	else
+		a = 19
+	endelse
+endwhile

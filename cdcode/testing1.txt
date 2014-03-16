@@ -1,0 +1,16 @@
+if p<q
+	if a<b
+		a = b+c
+		c = d*e
+	endif
+	else
+		b=c+d
+		d=a*e
+	endelse
+	if b<c
+		a = b+c
+		c= d+e
+	endif
+	p=q*r
+endif
+s = q*r
